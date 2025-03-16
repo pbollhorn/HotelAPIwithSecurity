@@ -56,8 +56,13 @@ Authorization: Bearer {{jwt_token}}
     "style": "Poetry Slam"
   }
 
+### PB GET request
+GET localhost:7070/api/hotel
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
 ### GET request with a header
-GET localhost:7070/api/poem/1
+GET localhost:7070/api/hotel/1
 Accept: application/json
 
 ### DELETE
@@ -145,7 +150,7 @@ GET localhost:7070/api/auth/test/
 %}
 
 ### GET request with a header
-GET {{url}}/poems/
+GET localhost:7070/api/hotel/
 Accept: application/json
 
 
