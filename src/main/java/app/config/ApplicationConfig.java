@@ -1,5 +1,6 @@
 package app.config;
 
+import app.security.controllers.AccessController;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -20,6 +21,8 @@ public class ApplicationConfig
     private static JavalinConfig javalinConfig;
     private ObjectMapper objectMapper = new ObjectMapper();
     private static Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
+
+    private static AccessController accessController = new AccessController();
 
     private ApplicationConfig()
     {
@@ -56,6 +59,7 @@ public class ApplicationConfig
 
     public ApplicationConfig startServer(int port)
     {
+        app.beforeMatched(accessController::accessHandler); // TODO: Move out to follow builder pattern
         app.start(port);
         return applicationConfig;
     }

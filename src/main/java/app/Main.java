@@ -1,6 +1,7 @@
 package app;
 
 import app.dtos.HotelDto;
+import app.security.routes.SecurityRoutes;
 import jakarta.persistence.EntityManagerFactory;
 
 import org.slf4j.Logger;
@@ -70,6 +71,8 @@ public class Main
                 .getInstance()
                 .initiateServer()
                 .setRoute(Routes.getRoutes())
+                .setRoute(SecurityRoutes.getSecurityRoutes())
+                .setRoute(SecurityRoutes.getSecuredRoutes())
                 .handleException()
                 .autoShutdown()
                 .startServer(7070);
