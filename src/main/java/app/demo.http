@@ -1,0 +1,38 @@
+GET localhost:7070/api/hotel
+###
+GET localhost:7070/api/hotel/1
+###
+GET localhost:7070/api/hotel/1/room
+###
+POST localhost:7070/api/hotel
+Content-Type: "application/json"
+
+{
+    "name": "Hotel 3",
+    "address": "Address 3"
+}
+###
+POST localhost:7070/api/hotel
+Content-Type: "application/json"
+
+{
+    "name": "Hotel 3",
+}
+###
+POST localhost:7070/api/hotel
+Content-Type: "application/json"
+
+{
+    "badname": "Bad",
+    "badaddress": "Bad"
+}
+###
+PUT localhost:7070/api/hotel/1
+Content-Type: "application/json"
+
+{
+    "name": "New Hotel Name",
+    "address": "New Hotel Address"
+}
+###
+DELETE localhost:7070/api/hotel/1
