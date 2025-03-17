@@ -1,21 +1,22 @@
 package app.security.entities;
 
-import jakarta.persistence.*;
-import lombok.ToString;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.*;
+import lombok.ToString;
+
 /**
  * Purpose: To handle security in the API
- *  Author: Thomas Hartmann
+ * Author: Thomas Hartmann
  */
 @Entity
 @Table(name = "roles")
 @NamedQueries(@NamedQuery(name = "Role.deleteAllRows", query = "DELETE from Role"))
-public class Role implements Serializable {
+public class Role implements Serializable
+{
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -29,22 +30,28 @@ public class Role implements Serializable {
     @ManyToMany(mappedBy = "roles")
     private Set<User> users = new HashSet<>();
 
-    public Role() {}
+    public Role()
+    {
+    }
 
-    public Role(String roleName) {
+    public Role(String roleName)
+    {
         this.name = roleName;
     }
 
-    public String getRoleName() {
+    public String getRoleName()
+    {
         return name;
     }
 
-    public Set<User> getUsers() {
+    public Set<User> getUsers()
+    {
         return users;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Role{" + "roleName='" + name + '\'' + '}';
     }
 }

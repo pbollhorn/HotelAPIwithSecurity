@@ -1,13 +1,13 @@
 package app.security.entities;
 
-import jakarta.persistence.*;
-import lombok.*;
-import org.mindrot.jbcrypt.BCrypt;
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
+import jakarta.persistence.*;
+import lombok.*;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  * Purpose: To handle security in the API
@@ -21,7 +21,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class User implements Serializable, ISecurityUser {
+public class User implements Serializable, ISecurityUser
+{
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -38,8 +39,10 @@ public class User implements Serializable, ISecurityUser {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Set<Role> roles = new HashSet<>();
 
-    public Set<String> getRolesAsStrings() {
-        if (roles.isEmpty()) {
+    public Set<String> getRolesAsStrings()
+    {
+        if (roles.isEmpty())
+        {
             return null;
         }
         Set<String> rolesAsStrings = new HashSet<>();
@@ -49,29 +52,35 @@ public class User implements Serializable, ISecurityUser {
         return rolesAsStrings;
     }
 
-    public boolean verifyPassword(String pw) {
+    public boolean verifyPassword(String pw)
+    {
         return BCrypt.checkpw(pw, this.password);
     }
 
-    public User(String userName, String userPass) {
+    public User(String userName, String userPass)
+    {
         this.username = userName;
         this.password = BCrypt.hashpw(userPass, BCrypt.gensalt());
     }
 
-    public User(String userName, Set<Role> roleEntityList) {
+    public User(String userName, Set<Role> roleEntityList)
+    {
         this.username = userName;
         this.roles = roleEntityList;
     }
 
-    public void addRole(Role role) {
-        if (role == null) {
+    public void addRole(Role role)
+    {
+        if (role == null)
+        {
             return;
         }
         roles.add(role);
         role.getUsers().add(this);
     }
 
-    public void removeRole(String userRole) {
+    public void removeRole(String userRole)
+    {
         roles.stream()
                 .filter(role -> role.getRoleName().equals(userRole))
                 .findFirst()
