@@ -1,6 +1,5 @@
 package app.config;
 
-import app.security.controllers.AccessController;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -13,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import static io.javalin.apibuilder.ApiBuilder.path;
 
 import app.exceptions.ApiException;
+import app.security.controllers.AccessController;
 
 public class ApplicationConfig
 {
