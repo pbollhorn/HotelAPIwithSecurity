@@ -1,16 +1,16 @@
-GET localhost:7070/api/hotel
+GET {{url}}/hotel
 Authorization: Bearer {{jwt_token}}
 
 ###
-GET localhost:7070/api/hotel/1
+GET {{url}}/hotel/1
 Authorization: Bearer {{jwt_token}}
 
 ###
-GET localhost:7070/api/hotel/1/room
+GET {{url}}/hotel/1/room
 Authorization: Bearer {{jwt_token}}
 
 ###
-POST localhost:7070/api/hotel
+POST {{url}}/hotel
 Authorization: Bearer {{jwt_token}}
 
 {
@@ -19,7 +19,7 @@ Authorization: Bearer {{jwt_token}}
 }
 
 ###
-POST localhost:7070/api/hotel
+POST {{url}}/hotel
 Authorization: Bearer {{jwt_token}}
 
 {
@@ -27,7 +27,7 @@ Authorization: Bearer {{jwt_token}}
 }
 
 ###
-POST localhost:7070/api/hotel
+POST {{url}}/hotel
 Authorization: Bearer {{jwt_token}}
 
 {
@@ -36,7 +36,7 @@ Authorization: Bearer {{jwt_token}}
 }
 
 ###
-PUT localhost:7070/api/hotel/1
+PUT {{url}}/hotel/1
 Authorization: Bearer {{jwt_token}}
 
 {
@@ -45,5 +45,5 @@ Authorization: Bearer {{jwt_token}}
 }
 
 ###
-DELETE localhost:7070/api/hotel/1
+DELETE {{url}}/hotel/1
 Authorization: Bearer {{jwt_token}}
