@@ -1,23 +1,26 @@
 GET localhost:7070/api/hotel
+Authorization: Bearer {{jwt_token}}
 
 ###
 GET localhost:7070/api/hotel/1
+Authorization: Bearer {{jwt_token}}
 
 ###
 GET localhost:7070/api/hotel/1/room
+Authorization: Bearer {{jwt_token}}
 
 ###
 POST localhost:7070/api/hotel
-Content-Type: "application/json"
+Authorization: Bearer {{jwt_token}}
 
 {
-    "name": "Hotel 3",
-    "address": "Address 3"
+    "name": "Hotel 4",
+    "address": "Address 4"
 }
 
 ###
 POST localhost:7070/api/hotel
-Content-Type: "application/json"
+Authorization: Bearer {{jwt_token}}
 
 {
     "name": "Hotel 3",
@@ -25,7 +28,7 @@ Content-Type: "application/json"
 
 ###
 POST localhost:7070/api/hotel
-Content-Type: "application/json"
+Authorization: Bearer {{jwt_token}}
 
 {
     "badname": "Bad",
@@ -34,7 +37,7 @@ Content-Type: "application/json"
 
 ###
 PUT localhost:7070/api/hotel/1
-Content-Type: "application/json"
+Authorization: Bearer {{jwt_token}}
 
 {
     "name": "New Hotel Name",
@@ -43,3 +46,4 @@ Content-Type: "application/json"
 
 ###
 DELETE localhost:7070/api/hotel/1
+Authorization: Bearer {{jwt_token}}
