@@ -28,15 +28,15 @@ public class Routes
 
                 post("/", ctx -> {
                     HotelController.create(ctx);
-                }, Role.USER);
+                }, Role.ADMIN);
 
                 put("/{id}", ctx -> {
                     HotelController.update(ctx);
-                }, Role.USER);
+                }, Role.ADMIN);
 
                 delete("/{id}", ctx -> {
                     HotelController.delete(ctx);
-                }, Role.USER);
+                }, Role.ADMIN);
 
 
             });
