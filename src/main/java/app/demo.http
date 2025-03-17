@@ -14,8 +14,8 @@ POST {{url}}/hotel
 Authorization: Bearer {{jwt_token}}
 
 {
-    "name": "Hotel 4",
-    "address": "Address 4"
+    "name": "Hotel 3",
+    "address": "Address 3"
 }
 
 ###

@@ -4,11 +4,11 @@ import app.daos.HotelDao;
 import app.dtos.HotelDto;
 import app.entities.Hotel;
 import app.entities.Room;
-import app.exceptions.DaoException;
+import app.exceptions.DaoUnexpectedException;
 
 public class HotelPopulator
 {
-    public static HotelDto[] populate(HotelDao hotelDao) throws DaoException
+    public static HotelDto[] populate(HotelDao hotelDao) throws DaoUnexpectedException
     {
         Hotel hotel1 = new Hotel(new HotelDto("Hotel 1", "Address 1"));
         hotel1.addRoom(new Room("101", 1000.0));

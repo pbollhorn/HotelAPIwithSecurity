@@ -14,7 +14,7 @@ import app.daos.HotelDao;
 import app.daos.RoomDao;
 import app.entities.Hotel;
 import app.entities.Room;
-import app.exceptions.DaoException;
+import app.exceptions.DaoUnexpectedException;
 
 public class Main
 {
@@ -61,7 +61,7 @@ public class Main
             h2.addRoom(new Room("2A", 1800.0));
             hotelDao.createFromEntity(h2);
         }
-        catch (DaoException e)
+        catch (DaoUnexpectedException e)
         {
             System.out.println("ERROR POPULATING DATABASE");
             return;

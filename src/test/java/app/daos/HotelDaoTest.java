@@ -14,8 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import app.config.HibernateConfig;
 import app.dtos.HotelDto;
-import app.exceptions.DaoException;
-import app.exceptions.IdNotFoundException;
+import app.exceptions.DaoUnexpectedException;
+import app.exceptions.DaoIdNotFoundException;
 
 class HotelDaoTest
 {
@@ -82,9 +82,9 @@ class HotelDaoTest
         assertThat(h, samePropertyValuesAs(h1));
 
         // Negative tests
-        assertThrows(IdNotFoundException.class, () -> hotelDao.get(0));
-        assertThrows(IdNotFoundException.class, () -> hotelDao.get(-1));
-        assertThrows(IdNotFoundException.class, () -> hotelDao.get(17));
+        assertThrows(DaoIdNotFoundException.class, () -> hotelDao.get(0));
+        assertThrows(DaoIdNotFoundException.class, () -> hotelDao.get(-1));
+        assertThrows(DaoIdNotFoundException.class, () -> hotelDao.get(17));
 
     }
 
@@ -97,9 +97,9 @@ class HotelDaoTest
         assertEquals("Address 3", h.address());
 
         // Negative tests
-        assertThrows(DaoException.class, () -> hotelDao.create(null));
-        assertThrows(DaoException.class, () -> hotelDao.create(new HotelDto(null, "Address 4")));
-        assertThrows(DaoException.class, () -> hotelDao.create(new HotelDto("Hotel 4", null)));
+        assertThrows(DaoUnexpectedException.class, () -> hotelDao.create(null));
+        assertThrows(DaoUnexpectedException.class, () -> hotelDao.create(new HotelDto(null, "Address 4")));
+        assertThrows(DaoUnexpectedException.class, () -> hotelDao.create(new HotelDto("Hotel 4", null)));
     }
 
 
@@ -115,13 +115,13 @@ class HotelDaoTest
         assertEquals(5, roomDao.getAllByHotelId(1).size());
 
         // Negative tests: Bad id
-        assertThrows(IdNotFoundException.class, () -> hotelDao.update(0, new HotelDto("Updated Hotel", "Updated Address")));
-        assertThrows(IdNotFoundException.class, () -> hotelDao.update(0, null));
+        assertThrows(DaoIdNotFoundException.class, () -> hotelDao.update(0, new HotelDto("Updated Hotel", "Updated Address")));
+        assertThrows(DaoIdNotFoundException.class, () -> hotelDao.update(0, null));
 
         // Negative tests: Good id, bad hotelDto
-        assertThrows(DaoException.class, () -> hotelDao.update(1, null));
-        assertThrows(DaoException.class, () -> hotelDao.update(1, new HotelDto(null, "Updated Address")));
-        assertThrows(DaoException.class, () -> hotelDao.update(1, new HotelDto("Updated Hotel", null)));
+        assertThrows(DaoUnexpectedException.class, () -> hotelDao.update(1, null));
+        assertThrows(DaoUnexpectedException.class, () -> hotelDao.update(1, new HotelDto(null, "Updated Address")));
+        assertThrows(DaoUnexpectedException.class, () -> hotelDao.update(1, new HotelDto("Updated Hotel", null)));
     }
 
     @Test
@@ -132,7 +132,7 @@ class HotelDaoTest
         assertEquals(1, hotelDao.getAll().size());
 
         // Negative test
-        assertThrows(IdNotFoundException.class, () -> hotelDao.delete(0));
+        assertThrows(DaoIdNotFoundException.class, () -> hotelDao.delete(0));
 
     }
 

@@ -9,7 +9,7 @@ import jakarta.persistence.TypedQuery;
 
 import app.dtos.RoomDto;
 import app.entities.Room;
-import app.exceptions.DaoException;
+import app.exceptions.DaoUnexpectedException;
 
 public class RoomDao
 {
@@ -37,7 +37,7 @@ public class RoomDao
     }
 
 
-    public List<RoomDto> getAllByHotelId(int hotelId) throws DaoException
+    public List<RoomDto> getAllByHotelId(int hotelId) throws DaoUnexpectedException
     {
 
         try (EntityManager em = emf.createEntityManager())
@@ -58,7 +58,7 @@ public class RoomDao
         }
         catch (RuntimeException e)
         {
-            throw new DaoException("Error reading all rooms for hotel");
+            throw new DaoUnexpectedException("Error reading all rooms for hotel");
         }
     }
 

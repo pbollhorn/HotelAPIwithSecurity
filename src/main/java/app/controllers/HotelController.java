@@ -6,7 +6,7 @@ import io.javalin.http.Context;
 
 import app.entities.Hotel;
 import app.exceptions.ApiException;
-import app.exceptions.IdNotFoundException;
+import app.exceptions.DaoIdNotFoundException;
 import app.daos.HotelDao;
 import app.dtos.HotelDto;
 
@@ -39,7 +39,7 @@ public class HotelController
         {
             hotelDto = hotelDao.get(id);
         }
-        catch (IdNotFoundException e)
+        catch (DaoIdNotFoundException e)
         {
             throw new ApiException(404, e.getMessage());
         }
@@ -89,7 +89,7 @@ public class HotelController
         {
             hotelDto = hotelDao.update(id, hotelDto);
         }
-        catch (IdNotFoundException e)
+        catch (DaoIdNotFoundException e)
         {
             throw new ApiException(404, e.getMessage());
         }
@@ -115,7 +115,7 @@ public class HotelController
         {
             hotelDto = hotelDao.delete(id);
         }
-        catch (IdNotFoundException e)
+        catch (DaoIdNotFoundException e)
         {
             throw new ApiException(404, e.getMessage());
         }
